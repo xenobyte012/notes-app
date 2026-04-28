@@ -48,19 +48,3 @@ export const notesData = [
     dateModified: "4 april 2077 | 02:43"
   }
 ];
-
-# 1. Set identity (fix error 1)
-git config --global user.name "Clement Mukhale"
-git config --global user.email "xenobyte012@gmail.com"
-
-# 2. Add files again
-git add .
-
-# 3. Commit properly
-git commit -m "first commit"
-
-# 4. Make sure branch is main
-git branch -M main
-
-# 5. Push
-git push -u origin main
