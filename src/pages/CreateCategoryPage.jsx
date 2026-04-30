@@ -79,23 +79,17 @@ function CreateCategoryPage() {
 
     return acc;
   }, [])
-  //console.log(groupedCategory)
-  /*
-
-  */
+  
   let group = Object.groupBy(notes, note => note.category)
   let gp = Object.entries(group).map(([category, items]) => ({
     category,
     count: items.length
   }))
  
-
-  //console.log(gp)
-
   const results = gp.map(item => {
     return item.category
   })
-  //console.log(results)
+  
   const nvHome = useNavigate()
   return (
     <div className="bg-black   px-4 py-4  min-h-screen  text-white font-sans ">
