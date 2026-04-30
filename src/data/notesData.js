@@ -48,3 +48,6 @@ export const notesData = [
     dateModified: "4 april 2077 | 02:43"
   }
 ];
+git add .
+git commit -m "added search feature"
+git push

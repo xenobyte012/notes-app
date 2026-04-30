@@ -4,6 +4,7 @@ import CreateCategoryPage from "./pages/CreateCategoryPage";
 import { Route, Routes } from "react-router-dom";
 import { Outlet, useNavigate } from "react-router-dom"
 import { useState, createContext } from "react";
+import { v4 as uuidv4 } from "uuid"; // ✅ added
 
 export const NotesContext = createContext();
 
@@ -17,11 +18,11 @@ function App() {
     const categorysStored = localStorage.getItem("categorysData");
     return categorysStored
       ? JSON.parse(categorysStored)
-      : [{ category: "all", categoryId: crypto.randomUUID() }];
+      : [{ category: "all", categoryId: uuidv4() }]; // ✅ changed
   });
   
-  const [notesId, setNotesId] = useState(crypto.randomUUID());
-  const [categoryId, setCategoryId] = useState(crypto.randomUUID());
+  const [notesId, setNotesId] = useState(uuidv4()); // ✅ changed
+  const [categoryId, setCategoryId] = useState(uuidv4()); // ✅ changed
   const [now, setNow] = useState(new Date())
   const [title, setTitle] = useState('')
   const [text, setText] = useState('')
@@ -75,4 +76,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

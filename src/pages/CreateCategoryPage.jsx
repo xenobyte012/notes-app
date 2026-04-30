@@ -4,6 +4,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import CategoryComponent from '../components/CategoryComponent'
 import  CategoryExists  from "../components/CategoryExists";
 import { NotesContext } from "../App";
+import { v4 as uuidv4 } from "uuid";
 
 function CreateCategoryPage() {
   const {
@@ -55,7 +56,7 @@ function CreateCategoryPage() {
   
   //console.log(notes)
 
-    setCategoryId(() => crypto.randomUUID());
+    setCategoryId(() => uuidv4());
     setCategory('')
   }
   
