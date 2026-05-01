@@ -78,9 +78,15 @@ console.table(notes)
     );
   });
 
-  function deleteNote() {
-    setNotes(prev => prev.filter(note => note.circle === false))
-    console.log('dddddd')
+  function deleteNotes() {
+    setNotes(prevNotes => {
+      const updatedNotes = prevNotes.filter(note => note.circle !== true);
+      localStorage.setItem("notesData", JSON.stringify(updatedNotes));
+
+      return updatedNotes;
+    });
+
+
     setIsPressed(false)
     //setCircle(false)
   }
@@ -141,7 +147,7 @@ console.table(notes)
           <div>move to</div>
         </div>
         <div className="flex justify-center flex-col gap-1 items-center "
-          onClick={() => deleteNote()}
+          onClick={() => deleteNotes()}
           >
           <img src={delete_img} className="w-7 flex justify-center" 
             

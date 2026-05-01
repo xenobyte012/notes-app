@@ -18,11 +18,11 @@ function App() {
     const categorysStored = localStorage.getItem("categorysData");
     return categorysStored
       ? JSON.parse(categorysStored)
-      : [{ category: "all", categoryId: uuidv4() }]; // ✅ changed
+      : [{ category: "all", categoryId: uuidv4() }]; 
   });
   
-  const [notesId, setNotesId] = useState(uuidv4()); // ✅ changed
-  const [categoryId, setCategoryId] = useState(uuidv4()); // ✅ changed
+  const [notesId, setNotesId] = useState(uuidv4()); 
+  const [categoryId, setCategoryId] = useState(uuidv4());
   const [now, setNow] = useState(new Date())
   const [title, setTitle] = useState('')
   const [text, setText] = useState('')
