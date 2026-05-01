@@ -3,6 +3,8 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import SelectCategory from '../components/SelectCategory'
 import { FormattedDate, FormattedTime } from '../utils/Date'
 import { NotesContext } from '../App'
+import { v4 as uuidv4 } from "uuid"; 
+
 
 function CreateNotes() {
   const {
@@ -58,12 +60,12 @@ function CreateNotes() {
 
   function updateAll() {
 
-    if (updateNotes.title !== '' && updateNotes !== '') {
+    if (updateNotes.title !== '' || updateNotes !== '') {
       setNotes((oldNotes) => [...oldNotes, updateNotes])
-      setNotesId(crypto.randomUUID())
+      setNotesId(uuidv4())
       setTitle('')
       setText('')
-      setCircle(true)
+      setCircle(false)
     
     }
 

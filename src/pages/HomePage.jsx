@@ -79,10 +79,10 @@ console.table(notes)
   });
 
   function deleteNote() {
-    setNotes(prev => prev.filter(note => note.circle !== true))
+    setNotes(prev => prev.filter(note => note.circle === false))
     console.log('dddddd')
     setIsPressed(false)
-    setCircle(false)
+    //setCircle(false)
   }
  
 
