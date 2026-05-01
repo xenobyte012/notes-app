@@ -88,9 +88,14 @@ console.table(notes)
 
 
     setIsPressed(false)
-    //setCircle(false)
+    setCircle(false)
   }
  
+  function selectedNote() {
+    const numberOfSelectedNote = notes.filter(notes => notes.circle === true)
+    return numberOfSelectedNote.length
+  }
+
 
   return (
     <div className="bg-slate-950   px-4 py-4  min-h-screen  text-white font-sans">
@@ -100,7 +105,15 @@ console.table(notes)
             src={close_img}
             alt="close button"
             className={`w-9 ${!isPressed ? "hidden" : "block"}`}
-            onClick={() => setIsPressed(false)}
+            onClick={() => {
+              setIsPressed(false);
+              setNotes(prev => 
+                prev.map(note => ({...note, circle : false}))
+              )
+
+            }
+
+            }
           />
         </div>
         <div>
@@ -115,7 +128,7 @@ console.table(notes)
       <div className=" pt-4">
         <div>
           <h1 className="text-3xl ">
-            {!isPressed ? "Notes" : `${notes.length} item selected`}
+            {!isPressed ? "Notes" : `${selectedNote()} item selected`}
           </h1>
         </div>
       </div>
