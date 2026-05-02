@@ -22,6 +22,7 @@ function CreateNotes() {
     setCategory,
     listOfCategorys,
     circle,
+    setIsPressed,
     setCircle
   } = useContext(NotesContext)
 
@@ -60,7 +61,7 @@ function CreateNotes() {
 
   function updateAll() {
 
-    if (updateNotes.title !== '' || updateNotes !== '') {
+    if ( updateNotes !== '' && updateNotes.title !== '') {
       setNotes((oldNotes) => [...oldNotes, updateNotes])
       setNotesId(uuidv4())
       setTitle('')
@@ -88,7 +89,7 @@ function CreateNotes() {
           className="bg-blue-600 px-4 py-1 font-sans rounded-xl"
           onClick={() => {
             nvHome("/");
-
+            setIsPressed(false);
             updateAll();
           }}
         >

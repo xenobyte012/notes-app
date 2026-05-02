@@ -22,6 +22,8 @@ function HomePage() {
     setIsPressed,
     cirle,
     setCircle,
+    isSearch,
+    setIsSearch
   } = useContext(NotesContext);
   const nvCreateNotes = useNavigate();
   const nvCategoryPage = useNavigate()
@@ -99,7 +101,7 @@ console.table(notes)
 
   return (
     <div className="bg-slate-950   px-4 py-4  min-h-screen  text-white font-sans">
-      <div className="flex justify-between">
+      <div className={`flex justify-between ${isSearch ? "hidden" : "block"}`}>
         <div>
           <img
             src={close_img}
@@ -136,7 +138,7 @@ console.table(notes)
         <SearchComponents />
       </div>
 
-      <div className="flex flex-row my-4 overflow-x-auto leading-relaxed s ">
+      <div className={`flex flex-row my-4 overflow-x-auto leading-relaxed ${!isSearch ? "hidden" : "block"} `}>
         {categoryList}
       </div>
       <div>{displayNotes}</div>
