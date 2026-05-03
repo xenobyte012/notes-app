@@ -127,9 +127,9 @@ console.table(notes)
           </button>
         </div>
       </div>
-      <div className=" pt-4">
+      <div>
         <div>
-          <h1 className="text-3xl ">
+          <h1 className={`text-3xl pt-4 ${isSearch ? "hidden" : "block"}`}>
             {!isPressed ? "Notes" : `${selectedNote()} item selected`}
           </h1>
         </div>
@@ -138,7 +138,7 @@ console.table(notes)
         <SearchComponents />
       </div>
 
-      <div className={`flex flex-row my-4 overflow-x-auto leading-relaxed ${!isSearch ? "hidden" : "block"} `}>
+      <div className={`flex flex-row my-4 overflow-x-auto leading-relaxed ${isSearch ? "hidden" : "block"} `}>
         {categoryList}
       </div>
       <div>{displayNotes}</div>
