@@ -32,7 +32,7 @@ function SearchComponents() {
             onClick={() => setIsSearch(true)}
           />
             </div>
-            <div>
+            <div className={`${isSearch ? "hidden" : "block"}`}>
               <p className='text-blue-700 text-xl' onClick={() => setIsSearch(false)}>cancel</p>
             </div>
           </div>
