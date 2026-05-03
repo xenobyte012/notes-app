@@ -24,15 +24,15 @@ function SearchComponents() {
             <input
             type="Seach For Notes"
             placeholder="Search"
-            className="bg-gray-900  text-white font-2xl rounded-full  p-3 px-4 font-lg font-sans outline-none mt-4"
+            className="bg-gray-900 w-[300px] text-white font-2xl rounded-full  p-3 px-4 font-lg font-sans outline-none "
             value={search}
             onChange={(e) => {handleSearch(e.target.value);
               setIsSearch(true)
             }}
-            onClick={() => setIsSearch(true)}
+            onClick={() => setIsSearch(false)}
           />
             </div>
-            <div className={`${isSearch ? "hidden" : "block"}`}>
+            <div className={`${!isSearch ? "hidden" : "block"}`}>
               <p className='text-blue-700 text-xl' onClick={() => setIsSearch(false)}>cancel</p>
             </div>
           </div>

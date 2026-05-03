@@ -65,7 +65,7 @@ function DisplayNotesComponent(props) {
       onTouchEnd={props.handleMouseDown}
       onMouseUp={props.handleMouseUp}
       onMouseDown={props.handleMouseDown}
-      className="bg-slate-900 border-rounded text-white my-2 rounded-lg p-4 font-sans flex flex-row justify-between items-center"
+      className="bg-slate-900 border-rounded text-white my-2 rounded-xl p-4 font-sans flex flex-row justify-between items-center"
     >
       <div>
         <div>

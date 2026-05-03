@@ -141,7 +141,7 @@ console.table(notes)
       <div className={`flex flex-row my-4 overflow-x-auto leading-relaxed ${isSearch ? "hidden" : "block"} `}>
         {categoryList}
       </div>
-      <div>{displayNotes}</div>
+      <div className=' '>{displayNotes}</div>
       <div className="flex mb-6">
         <button
           onClick={() => nvCreateNotes("create-notes")}
