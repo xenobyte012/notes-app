@@ -27,6 +27,7 @@ function SearchComponents() {
             onChange={(e) => {handleSearch(e.target.value);
               setIsSearch(true)
             }}
+            onClick={() => setIsSearch(true)}
           />
         </form>
       </div>

@@ -31,7 +31,7 @@ function App() {
   const [circle, setCircle] = useState(false)
   const [categoryItems, setCategoryItems] = useState("all")
   const [categoryExistsPopup, setCategoryExistsPopup] = useState(false)
-  const [isSearch, setIsSearch] = useState(!false)
+  const [isSearch, setIsSearch] = useState(false)
 
   const [isPressed, setIsPressed] = useState(false);
   const value={
