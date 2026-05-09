@@ -57,7 +57,7 @@ function HomePage() {
   })
 
 
-  // const displayNotesNotAval = searchedAvalible ? "" : decideRender;
+
 
 
   useEffect(() => {
