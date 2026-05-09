@@ -12,6 +12,7 @@ import move_img from '../images/move.png'
 import close_img from '../images/close.png'
 
 
+
 function HomePage() {
   const {
     notes,
@@ -24,6 +25,8 @@ function HomePage() {
     setCircle,
     isSearch,
     setIsSearch,
+    search,
+    setSearch
   } = useContext(NotesContext);
   const nvCreateNotes = useNavigate();
   const nvCategoryPage = useNavigate()
@@ -31,7 +34,7 @@ function HomePage() {
   const listOfNotes = [...notes]
   let pressTimer;
 
-console.table(notes)
+  // console.table(notes)
 
   const handleMouseDown = () => {
     pressTimer = setTimeout(() => {
@@ -49,9 +52,16 @@ console.table(notes)
       listOfNotes.filter(selectedCategory => selectedCategory.category === categoryItems)
   //console.log(append)
 
-  
+  const searching = listOfNotes.filter((item) => {
+    return search.toLowerCase() === ''
+      ? item
+      : item.title.toLowerCase().includes(search) || item.text.toLowerCase().includes(search)
+  })
 
-  const displayNotes = append.reverse().map((notes) => {
+  // decide Render is deciding if you are searching or not
+  let decideRender = isSearch ? searching : append;
+
+  const displayNotes = decideRender.reverse().map((notes) => {
     return (
       <DisplayNotesComponent
         notesId={notes.notesId}

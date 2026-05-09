@@ -1,20 +1,20 @@
 import React from 'react'
 import { NotesContext } from '../App';
-import { useContext, useEffect, useState } from "react";
+import { useContext,  } from "react";
 
 function SearchComponents() {
     const {
-      notes,
-      setNotes,
       isSearch,
-      setIsSearch
+      setIsSearch,
+      search,
+       setSearch
     } = useContext(NotesContext);
 
 
-    const [search, setSearch] = useState()
-
-    function handleSearch() {
-
+    function handleSearch(event) {
+      setSearch(event.target.value)
+      setIsSearch(true)
+      console.log(search)
     }
     return (
       <div>
@@ -23,17 +23,16 @@ function SearchComponents() {
             <div>
             <input
             type="Seach For Notes"
+            value={search}
             placeholder="Search"
             className="bg-gray-900 w-[300px] text-white font-2xl rounded-full  p-3 px-4 font-lg font-sans outline-none "
             value={search}
-            onChange={(e) => {handleSearch(e.target.value);
-              setIsSearch(true)
-            }}
+            onChange={handleSearch}
             onClick={() => setIsSearch(false)}
           />
             </div>
             <div className={`${!isSearch ? "hidden" : "block"}`}>
-              <p className='text-blue-700 text-xl' onClick={() => setIsSearch(false)}>cancel</p>
+              <p className='text-blue-700 text-xl' onClick={() => {setIsSearch(false); setSearch('')}}>cancel</p>
             </div>
           </div>
           

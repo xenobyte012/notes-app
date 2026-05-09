@@ -32,7 +32,7 @@ function App() {
   const [categoryItems, setCategoryItems] = useState("all")
   const [categoryExistsPopup, setCategoryExistsPopup] = useState(false)
   const [isSearch, setIsSearch] = useState(false)
-
+    const [search, setSearch] = useState('')
   const [isPressed, setIsPressed] = useState(false);
   const value={
     listOfCategorys,
@@ -60,7 +60,9 @@ function App() {
     isPressed,
     setIsPressed,
     isSearch, 
-    setIsSearch
+    setIsSearch,
+    search, 
+    setSearch
   }
   return (
     <NotesContext.Provider

@@ -9,17 +9,11 @@ function DisplayNotesComponent(props) {
   const {
     notes,
     setNotes,
-    notesId,
-    title,
     setTitle,
-    text,
     setText,
-    category,
-    setCategory,
     modifiedDate,
     setModifiedDate,
     isPressed,
-    circle
   } = useContext(NotesContext);
 
   const editNotes = useNavigate();
@@ -30,7 +24,6 @@ function DisplayNotesComponent(props) {
   function handleClickNotes(getItemNotes) {
     // editNotes('edit-notes')
     editNotes("edit-notes");
-    let isClicked = true;
     const clickedNote = notes.find(
       (note) => note.notesId === getItemNotes.notesId,
     );
@@ -72,7 +65,7 @@ function DisplayNotesComponent(props) {
           <span className="text-xl">
             {props.title.length === 0 ? notesTextLength : props.title}
           </span>
-        </div>
+        </div>   
         <div className="text-stone-400 text-lg">
           <span>{props.text.length === 0 ? "No text" : notesTextLength}</span>
         </div>
