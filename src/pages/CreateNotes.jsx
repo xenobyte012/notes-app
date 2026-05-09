@@ -20,7 +20,6 @@ function CreateNotes() {
     setModifiedDate,
     category,
     setCategory,
-    listOfCategorys,
     circle,
     setIsPressed,
     setCircle

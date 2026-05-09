@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+
 
 function NoteComponent(props) {
   // creating a state to hold list of category
@@ -7,7 +7,7 @@ function NoteComponent(props) {
 
   return (
     <div
-      onClick={() => handleClickNotes(props)}
+      
       className="bg-gray-900 border-rounded text-white my-2 rounded-lg p-4 font-sans "
     >
       <div>

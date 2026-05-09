@@ -21,12 +21,9 @@ function HomePage() {
     categoryItems,
     isPressed,
     setIsPressed,
-    circle,
     setCircle,
     isSearch,
-    setIsSearch,
     search,
-    setSearch
   } = useContext(NotesContext);
   const nvCreateNotes = useNavigate();
   const nvCategoryPage = useNavigate()
