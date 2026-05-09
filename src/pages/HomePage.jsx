@@ -27,6 +27,7 @@ function HomePage() {
   } = useContext(NotesContext);
   const nvCreateNotes = useNavigate();
   const nvCategoryPage = useNavigate()
+  const [searchedAvalible, setSearchedAvalible] = useState(true)
 
   const listOfNotes = [...notes]
   let pressTimer;
@@ -51,9 +52,18 @@ function HomePage() {
 
   const searching = listOfNotes.filter((item) => {
     return search.toLowerCase() === ''
-      ? item
-      : item.title.toLowerCase().includes(search) || item.text.toLowerCase().includes(search)
+      ? item 
+      : item.title.toLowerCase().includes(search) || item.text.toLowerCase().includes(search) 
   })
+
+
+  // const displayNotesNotAval = searchedAvalible ? "" : decideRender;
+
+
+  useEffect(() => {
+    setSearchedAvalible(searching === '')
+  }, [searching, search])
+  console.log(searchedAvalible)
 
   // decide Render is deciding if you are searching or not
   let decideRender = isSearch ? searching : append;
@@ -136,7 +146,7 @@ function HomePage() {
       </div>
       <div>
         <div>
-          <h1 className={`text-3xl pt-4 ${isSearch ? "hidden" : "block"}`}>
+          <h1 className={`text-3xl pt-4 pb-4 ${isSearch ? "hidden" : "block"}`}>
             {!isPressed ? "Notes" : `${selectedNote()} item selected`}
           </h1>
         </div>

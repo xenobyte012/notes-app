@@ -25,7 +25,7 @@ function SearchComponents() {
             type="Seach For Notes"
             value={search}
             placeholder="Search"
-            className="bg-gray-900 w-[300px] text-white font-2xl rounded-full  p-3 px-4 font-lg font-sans outline-none "
+            className="bg-gray-900 w-[300px] text-white font-2xl rounded-full pl-5  p-3 px-4 font-lg font-sans outline-none "
             value={search}
             onChange={handleSearch}
             onClick={() => setIsSearch(false)}

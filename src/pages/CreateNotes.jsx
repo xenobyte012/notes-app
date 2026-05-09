@@ -22,7 +22,9 @@ function CreateNotes() {
     setCategory,
     circle,
     setIsPressed,
-    setCircle
+    setCircle,
+    setIsSearch,
+    setSearch
   } = useContext(NotesContext)
 
   const nvHome = useNavigate()
@@ -89,6 +91,8 @@ function CreateNotes() {
           onClick={() => {
             nvHome("/");
             setIsPressed(false);
+            setIsSearch(false)
+            setSearch('')
             updateAll();
           }}
         >
