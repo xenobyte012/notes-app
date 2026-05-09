@@ -60,7 +60,7 @@ function CreateNotes() {
 
   function updateAll() {
 
-    if ( updateNotes !== '' && updateNotes.title !== '') {
+    if ( updateNotes !== '' || updateNotes.title !== '') {
       setNotes((oldNotes) => [...oldNotes, updateNotes])
       setNotesId(uuidv4())
       setTitle('')
