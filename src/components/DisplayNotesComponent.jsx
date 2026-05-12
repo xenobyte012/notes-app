@@ -19,8 +19,9 @@ function DisplayNotesComponent(props) {
   const editNotes = useNavigate();
   const date = new Date(props.modifiedDate);
   const notesTextLength =
-    props.text.length > 40 ? props.text.slice(0, 40) + "..." : props.text;
-
+    props.text.length > 40 ? props.text.slice(0, 45) + "..." : props.text;
+  const notesTitleLength =
+    props.title.length > 40 ? props.title.slice(0, 45) + "..." : props.title;
   function handleClickNotes(getItemNotes) {
     // editNotes('edit-notes')
     editNotes("edit-notes");
@@ -62,8 +63,8 @@ function DisplayNotesComponent(props) {
     >
       <div>
         <div>
-          <span className="text-xl">
-            {props.title.length === 0 ? notesTextLength : props.title}
+          <span className="text-xl ">
+            {props.title.length === 0 ? notesTitleLength : props.title}
           </span>
         </div>   
         <div className="text-stone-400 text-lg">

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect} from 'react'
 import { Navigate, useNavigate } from 'react-router-dom';
 import SelectCategory from '../components/SelectCategory'
 import { FormattedDate, FormattedTime } from '../utils/Date'
@@ -17,7 +17,6 @@ function CreateNotes() {
     text,
     setText,
     modifiedDate,
-    setModifiedDate,
     category,
     setCategory,
     circle,
@@ -55,10 +54,7 @@ function CreateNotes() {
     setCategory(event.target.value)
   }
 
-  function handleUpdateModifiedDate(event) {
-    setModifiedDate(event.target.value);
-  }
-
+  
 
   function updateAll() {
 
