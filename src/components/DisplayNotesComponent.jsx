@@ -4,7 +4,8 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { NotesContext } from "../App";
 import circle_img from "../images/circle-solid.png";
-import selected_img from "../images/circle-check-solid.png"
+import selected_img from "../images/circle-check-solid.png";
+
 function DisplayNotesComponent(props) {
   const {
     notes,
