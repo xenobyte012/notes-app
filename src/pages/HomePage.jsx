@@ -50,19 +50,21 @@ function HomePage() {
       listOfNotes.filter(selectedCategory => selectedCategory.category === categoryItems)
   //console.log(append)
 
+
   const searching = listOfNotes.filter((item) => {
     return search.toLowerCase() === ''
       ? item 
       : item.title.toLowerCase().includes(search) || item.text.toLowerCase().includes(search) 
   })
 
-
-
-
-
   useEffect(() => {
-    setSearchedAvalible(searching === '')
-  }, [searching, search])
+    if(searching.length == 0 ) {
+      setSearchedAvalible(false)
+    } else {
+      setSearchedAvalible(true)
+    }
+  }, [searching])
+
   console.log(searchedAvalible)
 
   // decide Render is deciding if you are searching or not
@@ -185,6 +187,14 @@ function HomePage() {
             
           />
           <div>delete</div>
+        </div>
+      </div>
+      <div>
+        <div>
+          <img src=''/>
+        </div>
+        <div>
+          <p>No notes here yet</p>
         </div>
       </div>
     </div>
