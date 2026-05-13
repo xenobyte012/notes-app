@@ -20,9 +20,9 @@ function DisplayNotesComponent(props) {
   const editNotes = useNavigate();
   const date = new Date(props.modifiedDate);
   const notesTextLength =
-    props.text.length > 40 ? props.text.slice(0, 45) + "..." : props.text;
+    props.text.length >= 40 ? props.text.slice(0, 40) + "..." : props.text;
   const notesTitleLength =
-    props.title.length > 40 ? props.title.slice(0, 45) + "..." : props.title;
+    props.title.length >= 40 ? props.title.slice(0, 40) + "..." : props.title;
   function handleClickNotes(getItemNotes) {
     // editNotes('edit-notes')
     editNotes("edit-notes");
@@ -50,7 +50,7 @@ function DisplayNotesComponent(props) {
 
       
   }
-
+//replace(/\s+/g, " ")
   return (
     <div
       onClick={() => {
@@ -60,16 +60,16 @@ function DisplayNotesComponent(props) {
       onTouchEnd={props.handleMouseDown}
       onMouseUp={props.handleMouseUp}
       onMouseDown={props.handleMouseDown}
-      className="bg-slate-900 border-rounded text-white my-2 rounded-xl p-4 font-sans flex flex-row justify-between items-center"
+      className="bg-slate-900 border-rounded text-white my-2 rounded-xl p-4 font-sans flex flex-row justify-between items-center h-[120px] w-full"
     >
       <div>
         <div>
           <span className="text-xl ">
-            {props.title.length === 0 ? notesTitleLength : props.title}
+            {props.title.length !== 0 ? notesTitleLength : notesTextLength}
           </span>
         </div>   
         <div className="text-stone-400 text-lg">
-          <span>{props.text.length === 0 ? "No text" : notesTextLength}</span>
+          <span>{props.text.length === 0 ? "No text" : props.title.length === 0 ? "No text": notesTextLength}</span>
         </div>
         <div className="text-stone-500 text-sm mt-3">
           <div className="flex flex-row gap-2">
