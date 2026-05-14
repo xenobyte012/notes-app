@@ -29,12 +29,13 @@ function App() {
   const [category, setCategory] = useState('')
   const [modifiedDate, setModifiedDate] = useState(now)
   const [circle, setCircle] = useState(false)
+  const [categoryCircle, setCategoryCircle] = useState(false)
   const [categoryItems, setCategoryItems] = useState("all")
   const [categoryExistsPopup, setCategoryExistsPopup] = useState(false)
   const [isSearch, setIsSearch] = useState(false)
     const [search, setSearch] = useState('')
   const [isPressed, setIsPressed] = useState(false);
-  const value={
+  const value = {
     listOfCategorys,
     setListOfCategorys,
     categoryId,
@@ -59,11 +60,13 @@ function App() {
     setCategoryExistsPopup,
     isPressed,
     setIsPressed,
-    isSearch, 
+    isSearch,
     setIsSearch,
-    search, 
-    setSearch
-  }
+    search,
+    setSearch,
+    categoryCircle,
+    setCategoryCircle,
+  };
   return (
     <NotesContext.Provider
       value={value}

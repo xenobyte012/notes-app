@@ -1,16 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NotesContext } from "../App";
 import { useContext } from "react";
 import circle_img from "../images/circle-solid.png";
 import selected_img from "../images/circle-check-solid.png";
 
 function CategoryComponent(props) {  
-  const {
-    notes,
-    listOfCategorys
-  } = useContext(NotesContext)
+  const { categoryCircle, setCategoryCircle } =
+    useContext(NotesContext);
 
-
+  const [selectedCategory , setSelectedCategory] = useState(false)
 
   return (
     <div className="  bg-gray-900 border-rounded text-white my-2 rounded-2xl p-3 font-sans ">
