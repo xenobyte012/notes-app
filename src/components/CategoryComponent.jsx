@@ -11,20 +11,29 @@ function CategoryComponent(props) {
   const [selectedCategory , setSelectedCategory] = useState(false)
 
   return (
-    <div className="  bg-gray-900 border-rounded text-white my-2 rounded-2xl p-3 font-sans ">
+    <div
+      className="  bg-gray-900 border-rounded text-white my-2 rounded-2xl p-3 font-sans "
+      onTouchStart={props.handleMouseUp}
+      onTouchEnd={props.handleMouseDown}
+      onMouseUp={props.handleMouseUp}
+      onMouseDown={props.handleMouseDown}
+    >
       <div className="flex flex-row  justify-between">
         <div>
           <span>{props.category}</span>
         </div>
         <div>
-          <img
-            src={circle_img}
-            alt="circle"
-            className="w-7"
-            onClick={(e) => {
-              e.stopPropagation();
-            }}
-          />
+          {selectedCategory && (
+            <img
+              src={props.checkCircle ? selected_img : circle_img}
+              alt="circle image"
+              className="w-7"
+              onClick={(e) => {
+                e.stopPropagation();
+                CheckTheCircle(props);
+              }}
+            />
+          )}
         </div>
       </div>
     </div>
