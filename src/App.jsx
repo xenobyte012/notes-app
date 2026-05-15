@@ -35,6 +35,7 @@ function App() {
   const [isSearch, setIsSearch] = useState(false)
     const [search, setSearch] = useState('')
   const [isPressed, setIsPressed] = useState(false);
+  const [isCategoryPressed, setIsCategoryPressed] = useState(false)
   const value = {
     listOfCategorys,
     setListOfCategorys,
@@ -66,6 +67,8 @@ function App() {
     setSearch,
     categoryCircle,
     setCategoryCircle,
+    isCategoryPressed,
+    setIsCategoryPressed,
   };
   return (
     <NotesContext.Provider

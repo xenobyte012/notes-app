@@ -18,6 +18,8 @@ function CreateCategoryPage() {
     setCategoryExistsPopup,
     categoryCircle,
     setCategoryCircle,
+    isCategoryPressed,
+    setIsCategoryPressed,
   } = useContext(NotesContext);
   //console.log(notes)
   const categoryObject = {
@@ -26,9 +28,27 @@ function CreateCategoryPage() {
     categoryCircle: categoryCircle,
   };
   
+  let pressTimer;
+    const handleMouseDown = () => {
+      pressTimer = setTimeout(() => {
+        setIsCategoryPressed(true);
+      }, 600);
+    };
+    const handleMouseUp = () => {
+      clearTimeout(pressTimer);
+    };
+
   //console.log(listOfCategorys)
   const outputListOfCategorys = listOfCategorys.map((category) => {
-    return <CategoryComponent key={category.categoryId} len={category.category} category={category.category}/>
+    return (
+      <CategoryComponent
+        key={category.categoryId}
+        len={category.category}
+        category={category.category}
+        handleMouseUp={handleMouseUp}
+        handleMouseDown={handleMouseDown}
+      />
+    );
   })
 
 
@@ -78,9 +98,19 @@ function CreateCategoryPage() {
       ),
     );
   }
- 
-
   
+  function deleteNotes() {
+    setCategory((prevNotes) => {
+      const updatedNotes = prevNotes.filter((note) => note.categoryCircle !== true);
+      localStorage.setItem("CategoryData", JSON.stringify(updatedNotes));
+
+      return updatedNotes;
+    });
+
+    setIsCategoryPressed(false);
+    setCategoryCircle(false);
+  }
+
   const nvHome = useNavigate()
   return (
     <div className="bg-black   px-4 py-4  min-h-screen  text-white font-sans ">
@@ -101,7 +131,7 @@ function CreateCategoryPage() {
         <div>
           <button
             className="bg-red-600 px-4 py-1 font-sans rounded-xl"
-            onClick={() => {}}
+            onClick={() => deleteNotes()}
           >
             Delete
           </button>

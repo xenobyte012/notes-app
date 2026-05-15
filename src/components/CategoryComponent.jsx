@@ -5,11 +5,19 @@ import circle_img from "../images/circle-solid.png";
 import selected_img from "../images/circle-check-solid.png";
 
 function CategoryComponent(props) {  
-  const { categoryCircle, setCategoryCircle } =
+  const {setCategory, categoryCircle, setCategoryCircle } =
     useContext(NotesContext);
 
   const [selectedCategory , setSelectedCategory] = useState(false)
-
+  function CheckTheCircle(getItemNotes) {
+    setCategory((prev) =>
+      prev.map((note) =>
+        getItemNotes.notesId === note.notesId
+          ? { ...note, circle: !note.circle }
+          : note,
+      ),
+    );
+  }
   return (
     <div
       className="  bg-gray-900 border-rounded text-white my-2 rounded-2xl p-3 font-sans "
