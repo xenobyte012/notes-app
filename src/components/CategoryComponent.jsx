@@ -5,6 +5,7 @@ import circle_img from "../images/circle-solid.png";
 import selected_img from "../images/circle-check-solid.png";
 
 function CategoryComponent(props) {  
+<<<<<<< HEAD
   const {setCategory, categoryCircle, setCategoryCircle } =
     useContext(NotesContext);
 
@@ -18,6 +19,27 @@ function CategoryComponent(props) {
       ),
     );
   }
+=======
+  const {listOfCategorys, setListOfCategorys, categoryCircle, setCategoryCircle } =
+    useContext(NotesContext);
+
+  const [selectedCategory , setSelectedCategory] = useState(false)
+
+
+  function checkTheCircle(clickedItem) {
+    console.log(clickedItem)
+    setListOfCategorys( prev => {
+      return (
+      prev.map((category) =>
+        clickedItem.categoryId === category.categoryId
+          ? { ...category, categoryCircle: !category.categoryCircle }
+          : category,
+      )
+      )
+    })
+  }
+
+>>>>>>> d6d9be7
   return (
     <div
       className="  bg-gray-900 border-rounded text-white my-2 rounded-2xl p-3 font-sans "
@@ -31,6 +53,7 @@ function CategoryComponent(props) {
           <span>{props.category}</span>
         </div>
         <div>
+<<<<<<< HEAD
           {selectedCategory && (
             <img
               src={props.checkCircle ? selected_img : circle_img}
@@ -42,6 +65,17 @@ function CategoryComponent(props) {
               }}
             />
           )}
+=======
+          <img
+            src={props.categoryCircle ? selected_img : circle_img}
+            alt="circle"
+            className="w-7"
+            onClick={(e) => {
+              e.stopPropagation();
+              checkTheCircle(props)
+            }}
+          />
+>>>>>>> d6d9be7
         </div>
       </div>
     </div>

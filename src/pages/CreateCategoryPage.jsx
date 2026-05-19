@@ -16,10 +16,16 @@ function CreateCategoryPage() {
     setCategory,
     categoryExistsPopup,
     setCategoryExistsPopup,
+<<<<<<< HEAD
     categoryCircle,
     setCategoryCircle,
     isCategoryPressed,
     setIsCategoryPressed,
+=======
+    setCategoryCircle,
+    categoryCircle
+    
+>>>>>>> d6d9be7
   } = useContext(NotesContext);
   //console.log(notes)
   const categoryObject = {
@@ -28,6 +34,7 @@ function CreateCategoryPage() {
     categoryCircle: categoryCircle,
   };
   
+<<<<<<< HEAD
   let pressTimer;
     const handleMouseDown = () => {
       pressTimer = setTimeout(() => {
@@ -39,14 +46,22 @@ function CreateCategoryPage() {
     };
 
   //console.log(listOfCategorys)
+=======
+>>>>>>> d6d9be7
   const outputListOfCategorys = listOfCategorys.map((category) => {
     return (
       <CategoryComponent
         key={category.categoryId}
+<<<<<<< HEAD
         len={category.category}
         category={category.category}
         handleMouseUp={handleMouseUp}
         handleMouseDown={handleMouseDown}
+=======
+        category={category.category}
+        categoryId={category.categoryId}
+        categoryCircle={category.categoryCircle}
+>>>>>>> d6d9be7
       />
     );
   })
@@ -89,6 +104,7 @@ function CreateCategoryPage() {
   useEffect(() => {
     localStorage.setItem("categorysData", JSON.stringify(listOfCategorys));
   }, [listOfCategorys]);
+<<<<<<< HEAD
   function CheckTheCircle(getItemNotes) {
     setCategory((prev) =>
       prev.map((note) =>
@@ -98,6 +114,12 @@ function CreateCategoryPage() {
       ),
     );
   }
+=======
+
+
+  
+
+>>>>>>> d6d9be7
   
   function deleteNotes() {
     setCategory((prevNotes) => {
