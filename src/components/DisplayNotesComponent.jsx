@@ -46,9 +46,7 @@ function DisplayNotesComponent(props) {
           ? { ...note, circle: !note.circle }
           : note,
       ),
-    );
-
-      
+    );  
   }
 //replace(/\s+/g, " ")
   return (

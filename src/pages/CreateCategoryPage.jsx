@@ -16,21 +16,29 @@ function CreateCategoryPage() {
     setCategory,
     categoryExistsPopup,
     setCategoryExistsPopup,
-    notes
+    setCategoryCircle,
+    categoryCircle
+    
   } = useContext(NotesContext);
   //console.log(notes)
   const categoryObject = {
     category: category,
     categoryId: categoryId,
+    categoryCircle: categoryCircle,
   };
   
-  //console.log(listOfCategorys)
   const outputListOfCategorys = listOfCategorys.map((category) => {
-    return <CategoryComponent key={category.categoryId} len={category.category} category={category.category}/>
+    return (
+      <CategoryComponent
+        key={category.categoryId}
+        category={category.category}
+        categoryId={category.categoryId}
+        categoryCircle={category.categoryCircle}
+      />
+    );
   })
 
-  const lst = listOfCategorys.find((check) => check.category == "all"); 
-  //console.log(lst)
+
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       addToListOfCategory()
@@ -69,26 +77,9 @@ function CreateCategoryPage() {
     localStorage.setItem("categorysData", JSON.stringify(listOfCategorys));
   }, [listOfCategorys]);
 
-  const groupedCategory = notes.reduce((acc, item) => 
-  {
-    if (!acc[item.category]) {
-      acc[item.category] = [];
 
-    }
-    acc[item.category].push(item.category);
-
-    return acc;
-  }, [])
   
-  let group = Object.groupBy(notes, note => note.category)
-  let gp = Object.entries(group).map(([category, items]) => ({
-    category,
-    count: items.length
-  }))
- 
-  const results = gp.map(item => {
-    return item.category
-  })
+
   
   const nvHome = useNavigate()
   return (
