@@ -72,8 +72,8 @@ function App() {
   };
   return (
     <NotesContext.Provider value={value}>
-      <div className="lg:bg-gray-900">
-        <div className=" flex justify-between  lg:max-w-[400px]  ">
+      <div className="lg:bg-gray-900    ">
+        <div className="  ">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/create-notes" element={<CreateNotes />} />
