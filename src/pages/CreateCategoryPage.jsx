@@ -5,6 +5,7 @@ import CategoryComponent from '../components/CategoryComponent'
 import  CategoryExists  from "../components/CategoryExists";
 import { NotesContext } from "../App";
 import { v4 as uuidv4 } from "uuid";
+import close_img from "../images/close.png";
 
 function CreateCategoryPage() {
   const {
@@ -16,16 +17,10 @@ function CreateCategoryPage() {
     setCategory,
     categoryExistsPopup,
     setCategoryExistsPopup,
-<<<<<<< HEAD
+    setCategoryCircle,
     categoryCircle,
-    setCategoryCircle,
-    isCategoryPressed,
     setIsCategoryPressed,
-=======
-    setCategoryCircle,
-    categoryCircle
-    
->>>>>>> d6d9be7
+    isCategoryPressed,
   } = useContext(NotesContext);
   //console.log(notes)
   const categoryObject = {
@@ -34,34 +29,13 @@ function CreateCategoryPage() {
     categoryCircle: categoryCircle,
   };
   
-<<<<<<< HEAD
-  let pressTimer;
-    const handleMouseDown = () => {
-      pressTimer = setTimeout(() => {
-        setIsCategoryPressed(true);
-      }, 600);
-    };
-    const handleMouseUp = () => {
-      clearTimeout(pressTimer);
-    };
-
-  //console.log(listOfCategorys)
-=======
->>>>>>> d6d9be7
-  const outputListOfCategorys = listOfCategorys.map((category) => {
+  const outputListOfCategorys = listOfCategorys.filter((filterAll) => filterAll.category !== "all").map((category) => {
     return (
       <CategoryComponent
         key={category.categoryId}
-<<<<<<< HEAD
-        len={category.category}
-        category={category.category}
-        handleMouseUp={handleMouseUp}
-        handleMouseDown={handleMouseDown}
-=======
         category={category.category}
         categoryId={category.categoryId}
         categoryCircle={category.categoryCircle}
->>>>>>> d6d9be7
       />
     );
   })
@@ -89,57 +63,55 @@ function CreateCategoryPage() {
       return [...prevCategories, categoryObject];
     });}
 
-  
-  //console.log(notes)
+
 
     setCategoryId(() => uuidv4());
     setCategory('')
   }
   
   function addCategory(event) {
+    setIsCategoryPressed(false)
     setCategory(event.target.value);
      
   }
 
+  let count = 0
+  listOfCategorys.map(selected => selected.categoryCircle ? count += 1 : count)
+  
+
   useEffect(() => {
     localStorage.setItem("categorysData", JSON.stringify(listOfCategorys));
   }, [listOfCategorys]);
-<<<<<<< HEAD
-  function CheckTheCircle(getItemNotes) {
-    setCategory((prev) =>
-      prev.map((note) =>
-        getItemNotes.notesId === note.notesId
-          ? { ...note, circle: !note.circle }
-          : note,
-      ),
-    );
-  }
-=======
 
+  let pressTimer;
 
+  const handleMouseDown = () => {
+    pressTimer = setTimeout(() => {
+      setIsCategoryPressed(true);
+    }, 600);
+  };
+  const handleMouseUp = () => {
+    clearTimeout(pressTimer);
+  };
   
-
->>>>>>> d6d9be7
-  
-  function deleteNotes() {
-    setCategory((prevNotes) => {
-      const updatedNotes = prevNotes.filter((note) => note.categoryCircle !== true);
-      localStorage.setItem("CategoryData", JSON.stringify(updatedNotes));
-
-      return updatedNotes;
-    });
-
-    setIsCategoryPressed(false);
-    setCategoryCircle(false);
+  function deleteCategories() {
+    setListOfCategorys(prevCategory => {
+      const UpadeListOfCategories = prevCategory.filter((category) => category.categoryCircle !== true);
+      localStorage.setItem("categorysData", JSON.stringify(UpadeListOfCategories));
+      return UpadeListOfCategories;
+    })
+    setCategoryCircle(false)
+    setIsCategoryPressed(false)
   }
 
+  
   const nvHome = useNavigate()
   return (
     <div className="bg-black   px-4 py-4  min-h-screen  text-white font-sans ">
       <div className="flex flex-row justify-between text-center pt-4 mb-6">
-        <div>
+        <div className={`${isCategoryPressed ? "hidden" : "block"}`}>
           <button
-            className="bg-blue-600 px-4 py-1 font-sans rounded-xl"
+            className={`bg-blue-600 px-4 py-1 font-sans rounded-xl `}
             onClick={() => {
               nvHome("/");
             }}
@@ -147,20 +119,44 @@ function CreateCategoryPage() {
             Back
           </button>
         </div>
+                <div>
+                  <img
+                    src={close_img}
+                    alt="close button"
+                    className={`w-9 ${!isCategoryPressed? "hidden" : "block"}`}
+                    onClick={() => {
+                      setIsCategoryPressed(false);
+                      setListOfCategorys(prev => 
+                        prev.map(category => ({...category, categoryCircle : false}))
+                      )
+        
+                    }
+        
+                    }
+                  />
+                </div>
         <div className="text-xl semibold">
-          <span>Categories</span>
+          <span>{!isCategoryPressed ? "Category":`Selected ${count}`}</span>
         </div>
         <div>
           <button
             className="bg-red-600 px-4 py-1 font-sans rounded-xl"
-            onClick={() => deleteNotes()}
+            onClick={() => {deleteCategories()}}
           >
             Delete
           </button>
         </div>
       </div>
       {categoryExistsPopup && <CategoryExists />}
-      <div>{outputListOfCategorys}</div>
+      <div
+        className=""
+        onTouchStart={handleMouseUp}
+        onTouchEnd={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onMouseDown={handleMouseDown}
+      >
+        {outputListOfCategorys}
+      </div>
       <div className="justify-center  flex flex-col  bg-gray-900 border-rounded text-white rounded-2xl p-6 font-sans">
         <span className="justify-center flex mb-5 text-lg">Add Category</span>
         <div className="flex flex-row justify-between gap-2">

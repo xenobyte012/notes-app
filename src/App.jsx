@@ -68,7 +68,7 @@ function App() {
     categoryCircle,
     setCategoryCircle,
     isCategoryPressed,
-    setIsCategoryPressed,
+    setIsCategoryPressed
   };
   return (
     <NotesContext.Provider

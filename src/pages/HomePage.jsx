@@ -27,48 +27,46 @@ function HomePage() {
     search,
   } = useContext(NotesContext);
   const nvCreateNotes = useNavigate();
-  const nvCategoryPage = useNavigate();
-  const [searchedAvalible, setSearchedAvalible] = useState(true);
+  const nvCategoryPage = useNavigate()
+  const [searchedAvalible, setSearchedAvalible] = useState(true)
 
-  const listOfNotes = [...notes];
+  const listOfNotes = [...notes]
   let pressTimer;
 
   // console.table(notes)
 
   const handleMouseDown = () => {
     pressTimer = setTimeout(() => {
-      setIsPressed(true);
-    }, 600);
-  };
+      setIsPressed(true)
+    },600)
+  }
   const handleMouseUp = () => {
-    clearTimeout(pressTimer);
-  };
+    clearTimeout(pressTimer)
+  }
   //console.log(isPressed)
-
+  
   const append =
-    categoryItems === "all"
-      ? listOfNotes
-      : listOfNotes.filter(
-          (selectedCategory) => selectedCategory.category === categoryItems,
-        );
+    categoryItems === 'all' ?
+      listOfNotes :
+      listOfNotes.filter(selectedCategory => selectedCategory.category === categoryItems)
   //console.log(append)
 
+
   const searching = listOfNotes.filter((item) => {
-    return search.toLowerCase() === ""
-      ? item
-      : item.title.toLowerCase().includes(search) ||
-          item.text.toLowerCase().includes(search);
-  });
+    return search.toLowerCase() === ''
+      ? item 
+      : item.title.toLowerCase().includes(search) || item.text.toLowerCase().includes(search) 
+  })
 
   useEffect(() => {
-    if (searching.length == 0) {
-      setSearchedAvalible(false);
+    if(searching.length == 0 ) {
+      setSearchedAvalible(false)
     } else {
-      setSearchedAvalible(true);
+      setSearchedAvalible(true)
     }
-  }, [searching]);
+  }, [searching])
 
-  console.log(searchedAvalible);
+  console.log(searchedAvalible)
 
   // decide Render is deciding if you are searching or not
   let decideRender = isSearch ? searching : append;
@@ -86,10 +84,13 @@ function HomePage() {
         handleMouseUp={handleMouseUp}
         handleMouseDown={handleMouseDown}
         checkCircle={notes.circle}
+
       />
     );
   });
 
+
+  
   const categoryList = listOfCategorys.map((category) => {
     return (
       <DisplayListOfCategory
@@ -98,23 +99,25 @@ function HomePage() {
       />
     );
   });
-  // d6abc32
+
   function deleteNotes() {
-    setNotes((prevNotes) => {
-      const updatedNotes = prevNotes.filter((note) => note.circle !== true);
+    setNotes(prevNotes => {
+      const updatedNotes = prevNotes.filter(note => note.circle !== true);
       localStorage.setItem("notesData", JSON.stringify(updatedNotes));
 
       return updatedNotes;
     });
 
-    setIsPressed(false);
-    setCircle(false);
+
+    setIsPressed(false)
+    setCircle(false)
+  }
+ 
+  function selectedNote() {
+    const numberOfSelectedNote = notes.filter(notes => notes.circle === true)
+    return numberOfSelectedNote.length
   }
 
-  function selectedNote() {
-    const numberOfSelectedNote = notes.filter((notes) => notes.circle === true);
-    return numberOfSelectedNote.length;
-  }
 
   return (
     <div className="bg-slate-950   px-4 py-4  min-h-screen  text-white font-sans">
@@ -126,10 +129,13 @@ function HomePage() {
             className={`w-9 ${!isPressed ? "hidden" : "block"}`}
             onClick={() => {
               setIsPressed(false);
-              setNotes((prev) =>
-                prev.map((note) => ({ ...note, circle: false })),
-              );
-            }}
+              setNotes(prev => 
+                prev.map(note => ({...note, circle : false}))
+              )
+
+            }
+
+            }
           />
         </div>
         <div>
@@ -152,12 +158,10 @@ function HomePage() {
         <SearchComponents />
       </div>
 
-      <div
-        className={`flex flex-row my-4 overflow-x-auto leading-relaxed ${isSearch ? "hidden" : "block"} `}
-      >
+      <div className={`flex flex-row my-4 overflow-x-auto leading-relaxed ${isSearch ? "hidden" : "block"} `}>
         {categoryList}
       </div>
-      <div className=" ">{displayNotes}</div>
+      <div className=' '>{displayNotes}</div>
       <div className="flex mb-6">
         <button
           onClick={() => nvCreateNotes("create-notes")}
@@ -170,33 +174,28 @@ function HomePage() {
         className={` grid grid-cols-3 w-full justify-between  items-center  py-3 fixed bottom-0 right-0 bg-slate-950 text-[12px] text-white text-center ${isPressed ? "block" : "hidden"}`}
       >
         <div className="flex justify-center flex-col gap-1  items-center">
-          <img src={pin_img} className="w-7" alt="image of pin" />
+          <img src={pin_img} className="w-7" alt="image of pin"/>
           <div>pin</div>
         </div>
         <div className="flex justify-center flex-col gap-1  items-center">
-          <img src={move_img} className="w-7" alt="image of move to" />
+          <img src={move_img} className="w-7" alt='image of move to' />
           <div>move to</div>
         </div>
-        <div
-          className="flex justify-center flex-col gap-1 items-center "
+        <div className="flex justify-center flex-col gap-1 items-center "
           onClick={() => deleteNotes()}
-        >
-          <img
-            src={delete_img}
-            className="w-7 flex justify-center"
-            alt="image of delete"
+          >
+          <img src={delete_img} className="w-7 flex justify-center" 
+            alt='image of delete'
           />
           <div>delete</div>
         </div>
       </div>
-      <div
-        className={`${searchedAvalible ? "hidden" : "block"} flex flex-col justify-center items-center gap-6 `}
-      >
-        <div className="w-30 mt-25 ml-4">
-          <img src={notes_img} alt="image of they is no notes here" />
+      <div className={`${searchedAvalible ? 'hidden': 'block'} flex flex-col justify-center items-center gap-6 `}>
+        <div className='w-30 mt-25 ml-4'>
+          <img src={notes_img} alt='image of they is no notes here' />
         </div>
         <div>
-          <p className="text-gray-500">No notes here yet</p>
+          <p className='text-gray-500'>No notes here yet</p>
         </div>
       </div>
     </div>

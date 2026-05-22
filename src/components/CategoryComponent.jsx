@@ -5,23 +5,15 @@ import circle_img from "../images/circle-solid.png";
 import selected_img from "../images/circle-check-solid.png";
 
 function CategoryComponent(props) {  
-<<<<<<< HEAD
-  const {setCategory, categoryCircle, setCategoryCircle } =
-    useContext(NotesContext);
 
-  const [selectedCategory , setSelectedCategory] = useState(false)
-  function CheckTheCircle(getItemNotes) {
-    setCategory((prev) =>
-      prev.map((note) =>
-        getItemNotes.notesId === note.notesId
-          ? { ...note, circle: !note.circle }
-          : note,
-      ),
-    );
-  }
-=======
-  const {listOfCategorys, setListOfCategorys, categoryCircle, setCategoryCircle } =
-    useContext(NotesContext);
+  const {
+    listOfCategorys,
+    setListOfCategorys,
+    categoryCircle,
+    setCategoryCircle,
+    isCategoryPressed,
+    setIsCategoryPressed,
+  } = useContext(NotesContext);
 
   const [selectedCategory , setSelectedCategory] = useState(false)
 
@@ -39,44 +31,33 @@ function CategoryComponent(props) {
     })
   }
 
->>>>>>> d6d9be7
+ console.log(props.categoryCircle)
+
   return (
     <div
       className="  bg-gray-900 border-rounded text-white my-2 rounded-2xl p-3 font-sans "
-      onTouchStart={props.handleMouseUp}
-      onTouchEnd={props.handleMouseDown}
-      onMouseUp={props.handleMouseUp}
-      onMouseDown={props.handleMouseDown}
     >
       <div className="flex flex-row  justify-between">
         <div>
           <span>{props.category}</span>
         </div>
-        <div>
-<<<<<<< HEAD
-          {selectedCategory && (
+        {isCategoryPressed && (
+          <div>
             <img
-              src={props.checkCircle ? selected_img : circle_img}
-              alt="circle image"
+              src={
+                props.categoryCircle
+                    ? selected_img
+                    : circle_img
+              }
+              alt="circle"
               className="w-7"
               onClick={(e) => {
                 e.stopPropagation();
-                CheckTheCircle(props);
+                checkTheCircle(props);
               }}
             />
-          )}
-=======
-          <img
-            src={props.categoryCircle ? selected_img : circle_img}
-            alt="circle"
-            className="w-7"
-            onClick={(e) => {
-              e.stopPropagation();
-              checkTheCircle(props)
-            }}
-          />
->>>>>>> d6d9be7
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
