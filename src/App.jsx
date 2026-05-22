@@ -71,17 +71,17 @@ function App() {
     setIsCategoryPressed
   };
   return (
-    <NotesContext.Provider
-      value={value}
-    >
-      <div className=" flex justify-between  max-w-[470px] bg-gray-800">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/create-notes" element={<CreateNotes />} />
-          <Route path="/edit-notes" element={<CreateNotes />} />
-          <Route path="/home-page" element={<HomePage />} />
-          <Route path="/category-page" element={<CreateCategoryPage />} />
-        </Routes>
+    <NotesContext.Provider value={value}>
+      <div className="bg-gray-900">
+        <div className=" flex justify-between  max-w-[470px] ">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/create-notes" element={<CreateNotes />} />
+            <Route path="/edit-notes" element={<CreateNotes />} />
+            <Route path="/home-page" element={<HomePage />} />
+            <Route path="/category-page" element={<CreateCategoryPage />} />
+          </Routes>
+        </div>
       </div>
     </NotesContext.Provider>
   );
