@@ -8,9 +8,8 @@ import App from './App.jsx'
 // import Test from './components/Test.jsx';
 
 createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename='/notes-app'>
       <App />
     </BrowserRouter>
-  </React.StrictMode>
+
 )
