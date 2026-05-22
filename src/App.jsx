@@ -74,7 +74,7 @@ function App() {
     <NotesContext.Provider
       value={value}
     >
-      <div>
+      <div className="max-w-[400px]">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/create-notes" element={<CreateNotes />} />
