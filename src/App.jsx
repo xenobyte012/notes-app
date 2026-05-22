@@ -74,7 +74,7 @@ function App() {
     <NotesContext.Provider
       value={value}
     >
-      <div className="max-w-[400px]">
+      <div className=" flex justify-between  max-w-[470px] bg-gray-800">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/create-notes" element={<CreateNotes />} />
@@ -88,3 +88,4 @@ function App() {
 }
 
 export default App;
+
